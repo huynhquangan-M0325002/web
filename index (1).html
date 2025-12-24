@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huỳnh Quang Ân - Bác Sĩ Thú Y</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: 
+                /* Fallback gradient */
+                linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 25%, #bae6fd 50%, #7dd3fc 75%, #38bdf8 100%),
+                /* Background image with lighter overlay for better visibility */
+                linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.68)), 
+                url('https://i.postimg.cc/HLwCSKBB/background.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .card-shadow {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 
+                        0 2px 8px rgba(0, 0, 0, 0.04),
+                        0 0 0 1px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 
+                        0 8px 16px rgba(0, 0, 0, 0.06),
+                        0 0 0 1px rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+            border-radius: 2px;
+        }
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .opacity-05 {
+            opacity: 0.05;
+        }
+        .modal-enter {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-image {
+            animation: zoomIn 0.3s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .bg-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .shape-blob {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+            border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+            animation: morph 15s linear infinite;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
+            25% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            50% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+            75% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 70%; }
+        }
+        @keyframes icon-pop {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes draw-line {
+            0% { height: 0; }
+            100% { height: 100%; }
+        }
+        .timeline-icon {
+            animation: icon-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .timeline-line {
+            animation: draw-line 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen py-8 px-4 custom-scrollbar">
+    <!-- Background decorative elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 shape-blob opacity-15 floating"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-48 h-48 shape-blob opacity-10 floating" style="animation-delay: -5s;"></div>
+        <div class="absolute top-3/4 left-1/3 w-32 h-32 shape-blob opacity-05 pulse"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <div class="inline-block p-1 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 mb-6">
+                <div class="bg-white rounded-full p-3">
+                    <i class="fas fa-user-md text-3xl text-gradient"></i>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">Giới Thiệu Bản Thân</h1>
+            <div class="flex items-center justify-center gap-4">
+                <div class="h-px w-20 bg-gradient-to-r from-transparent to-blue-400"></div>
+                <p class="text-xl text-gray-600 font-medium">Trang Cá Nhân Của Ân</p>
+                <div class="h-px w-20 bg-gradient-to-r from-blue-400 to-transparent"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex flex-col lg:flex-row gap-10 mb-16">
+            <!-- Left Column: Profile Card -->
+            <div class="lg:w-2/5">
+                <div class="glass-effect rounded-3xl card-shadow overflow-hidden hover-lift">
+                    <div class="p-10">
+                        <!-- Avatar -->
+                        <div class="relative mx-auto w-56 h-56 mb-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full p-1">
+                                <div class="w-full h-full bg-white rounded-full"></div>
+                            </div>
+                            <img 
+                                src="https://i.postimg.cc/s2027wJJ/anh.jpg" 
+                                alt="Huỳnh Quang Ân" 
+                                class="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] object-cover rounded-full border-4 border-white"
+                                id="profile-image"
+                                onerror="this.src='https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute -bottom-3 -right-3 bg-gradient-to-br from-blue-500 to-cyan-500 text-white p-4 rounded-full shadow-lg">
+                                <i class="fas fa-stethoscope text-2xl"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Personal Info -->
+                        <div class="text-center">
+                            <h2 class="text-3xl font-bold text-gray-800 mb-3">Huỳnh Quang Ân</h2>
+                            <div class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 px-6 py-3 rounded-full mb-6 border border-blue-100">
+                                <i class="fas fa-user-md text-lg"></i>
+                                <span class="font-semibold text-lg">Bác Sĩ Thú Y</span>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                                Tôi là bác sĩ thú y với niềm đam mê chăm sóc và bảo vệ sức khỏe cho động vật. Tôi luôn nỗ lực mang lại sự thoải mái và hạnh phúc cho những người bạn bốn chân.
+                            </p>
+                            
+                            <!-- Contact Info -->
+                            <div class="space-y-4 text-left">
+                                <div class="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 transition-all duration-300 border border-green-100">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white shadow-md">
+                                        <i class="fas fa-heart text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-700">Đam mê với động vật</p>
+                                        <p class="text-sm text-gray-500">Yêu thương và chăm sóc</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 transition-all duration-300 border border-purple-100">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-violet-500 flex items-center justify-center text-white shadow-md">
+                                        <i class="fas fa-graduation-cap text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-700">Tốt nghiệp ĐH Cần Thơ</p>
+                                        <p class="text-sm text-gray-500">Khoá 44</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 transition-all duration-300 border border-amber-100">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center text-white shadow-md">
+                                        <i class="fas fa-award text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-700">5 năm kinh nghiệm</p>
+                                        <p class="text-sm text-gray-500">Chuyên nghiệp và tận tâm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Details -->
+            <div class="lg:w-3/5 space-y-10">
+                <!-- About Me -->
+                <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white shadow-lg">
+                            <i class="fas fa-user text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Về Tôi</h3>
+                            <p class="text-gray-500">Đam mê và sứ mệnh của tôi</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            Tôi là Huỳnh Quang Ân, một bác sĩ thú y với hơn 5 năm kinh nghiệm trong lĩnh vực chăm sóc sức khỏe động vật. Tôi đã làm việc tại nhiều bệnh viện thú y và hiện đang công tác tại Công Ty TNHH Sáu Ngôi Sao Việt Nam.
+                        </p>
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            Sứ mệnh của tôi là mang lại sự chăm sóc y tế tốt nhất cho thú cưng, giúp chúng có một cuộc sống khỏe mạnh và hạnh phúc bên cạnh chủ nhân. Tôi tin rằng mỗi con vật đều xứng đáng được yêu thương và chăm sóc chu đáo.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Hobbies -->
+                <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white shadow-lg">
+                            <i class="fas fa-heart text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Sở Thích</h3>
+                            <p class="text-gray-500">Những điều tôi yêu thích</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 hover:border-blue-200 transition-all duration-300 group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-music text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 text-xl mb-4">Nghe Nhạc</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Yêu thích các bài hát: 3107, Sao Cũng Được, OK, Exit Sign, Không Thể Say, Em Không Khóc, Lựa Chọn Của Em, Anh Vui.</p>
+                        </div>
+                        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 hover:border-green-200 transition-all duration-300 group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-film text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 text-xl mb-4">Xem Phim</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Yêu thích phim Việt Nam như Mưa Đỏ, Lật Mặt và các phim tâm lý, hành động đình đám.</p>
+                        </div>
+                        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-100 hover:border-amber-200 transition-all duration-300 group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-plane text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 text-xl mb-4">Đi Du Lịch</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Khám phá thiên nhiên, tìm hiểu về nét đẹp đặc sắc riêng biệt tại các vùng miền.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quote -->
+                <div class="bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 rounded-3xl card-shadow p-10 text-white hover-lift">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-8">
+                            <i class="fas fa-quote-right text-3xl"></i>
+                        </div>
+                        <p class="text-2xl italic mb-8 leading-relaxed font-light">
+                            "Hai mươi năm về sau bạn sẽ hối hận về những gì bạn không làm hơn là những gì bạn làm. Vậy nên hãy tháo dây, nhổ neo ra khỏi bến đỗ an toàn. Hãy để cánh buồm của bạn đón trọn lấy gió. Thám hiểm. Mơ mộng. Khám phá."
+                        </p>
+                        <div class="flex items-center justify-center gap-3">
+                            <div class="h-px w-12 bg-white/30"></div>
+                            <p class="font-semibold text-lg">Mark Twain</p>
+                            <div class="h-px w-12 bg-white/30"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Travel Gallery -->
+        <section class="mb-16">
+            <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-camera text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Hình Ảnh Du Lịch</h3>
+                        <p class="text-gray-500">Khoảnh khắc đáng nhớ</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg mb-10 leading-relaxed">
+                    Những khoảnh khắc đáng nhớ trong các chuyến du lịch khám phá thiên nhiên và tìm hiểu về nét đẹp đặc sắc riêng biệt tại các vùng miền.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="travel-gallery">
+                    <!-- Images will be inserted here by JavaScript -->
+                </div>
+                <div class="text-center mt-10">
+                    <button id="show-more-btn" class="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium py-4 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-images mr-3"></i>Xem Thêm Hình Ảnh
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorite Movies -->
+        <section class="mb-16">
+            <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-film text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Phim Ấn Tượng</h3>
+                        <p class="text-gray-500">Những bộ phim đáng nhớ</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg mb-10 leading-relaxed">
+                    Những bộ phim đã để lại ấn tượng sâu sắc với tôi. Mỗi bộ phim không chỉ là giải trí mà còn mang đến những bài học và cảm xúc đáng nhớ.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="movies-gallery">
+                    <!-- Movie 1: Mưa Đỏ -->
+                    <div class="rounded-2xl overflow-hidden hover-lift cursor-pointer relative group">
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="https://i.postimg.cc/fRFBXc1X/350x495_muado_1.jpg" 
+                                alt="Mưa Đỏ" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                <h4 class="font-bold text-xl mb-2">Mưa Đỏ</h4>
+                                <p class="text-sm opacity-90">Phim lịch sử về chiến dịch Điện Biên Phủ</p>
+                                <div class="mt-4 flex items-center text-blue-300">
+                                    <i class="fas fa-play-circle mr-2"></i>
+                                    <span class="text-sm">Xem chi tiết</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Movie 2: Lật Mặt 4 -->
+                    <div class="rounded-2xl overflow-hidden hover-lift cursor-pointer relative group">
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="https://i.postimg.cc/CxtmDG9H/la_t_ma_t_4.jpg" 
+                                alt="Lật Mặt 4" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                <h4 class="font-bold text-xl mb-2">Lật Mặt 4</h4>
+                                <p class="text-sm opacity-90">Phim hành động, tâm lý đình đám</p>
+                                <div class="mt-4 flex items-center text-blue-300">
+                                    <i class="fas fa-play-circle mr-2"></i>
+                                    <span class="text-sm">Xem chi tiết</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Movie 3: Lật Mặt 6 -->
+                    <div class="rounded-2xl overflow-hidden hover-lift cursor-pointer relative group">
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="https://i.postimg.cc/kgZf8QLQ/La_t_ma_t_6_poster.jpg" 
+                                alt="Lật Mặt 6" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                <h4 class="font-bold text-xl mb-2">Lật Mặt 6</h4>
+                                <p class="text-sm opacity-90">Phần tiếp theo của series Lật Mặt</p>
+                                <div class="mt-4 flex items-center text-blue-300">
+                                    <i class="fas fa-play-circle mr-2"></i>
+                                    <span class="text-sm">Xem chi tiết</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Movie 4: Âm Dương Lộ -->
+                    <div class="rounded-2xl overflow-hidden hover-lift cursor-pointer relative group">
+                        <div class="relative h-80 overflow-hidden">
+                            <img 
+                                src="https://i.postimg.cc/25ZTxqf1/phim_thang_3_2025_13_4b9557e562.jpg" 
+                                alt="Âm Dương Lộ" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                <h4 class="font-bold text-xl mb-2">Âm Dương Lộ</h4>
+                                <p class="text-sm opacity-90">Phim kinh dị, tâm linh hấp dẫn</p>
+                                <div class="mt-4 flex items-center text-blue-300">
+                                    <i class="fas fa-play-circle mr-2"></i>
+                                    <span class="text-sm">Xem chi tiết</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorite Music -->
+        <section class="mb-16">
+            <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-music text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Nhạc Yêu Thích</h3>
+                        <p class="text-gray-500">Bài hát tâm đắc mỗi ngày</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg mb-10 leading-relaxed">
+                    Những bài hát tôi yêu thích nghe mỗi ngày. Mỗi bài hát đều mang đến những cảm xúc và kỷ niệm đặc biệt trong cuộc sống của tôi.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Song 1: 3107 -->
+                    <a href="https://www.youtube.com/watch?v=GatNL0mmQGc&list=RDGatNL0mmQGc&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-pink-100 hover:border-pink-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">3107</h4>
+                                    <p class="text-pink-600 text-sm">W/N, Duongg, Nâu</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Bài hát với giai điệu nhẹ nhàng, sâu lắng về những kỷ niệm và hoài niệm.</p>
+                            <div class="flex items-center text-pink-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 2: Sao Cũng Được -->
+                    <a href="https://www.youtube.com/watch?v=z35r-OeqLgQ&list=RDz35r-OeqLgQ&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-purple-100 hover:border-purple-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Sao Cũng Được</h4>
+                                    <p class="text-purple-600 text-sm">HIEUTHUHAI</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Ca khúc với thông điệp tích cực về sự lạc quan và chấp nhận trong cuộc sống.</p>
+                            <div class="flex items-center text-purple-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 3: OK -->
+                    <a href="https://www.youtube.com/watch?v=SNES5Y-tYxM&list=RDSNES5Y-tYxM&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-blue-100 hover:border-blue-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">OK</h4>
+                                    <p class="text-blue-600 text-sm">Binz</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Bài hát với vibe chill, giai điệu bắt tai và ca từ ý nghĩa về sự ổn định.</p>
+                            <div class="flex items-center text-blue-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 4: Exit Sign -->
+                    <a href="https://www.youtube.com/watch?v=sJt_i0hOugA&list=RDsJt_i0hOugA&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-green-100 hover:border-green-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Exit Sign</h4>
+                                    <p class="text-green-600 text-sm">Seachains</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Ca khúc indie với giai điệu nhẹ nhàng, phù hợp cho những lúc thư giãn.</p>
+                            <div class="flex items-center text-green-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 5: Không Thể Say -->
+                    <a href="https://www.youtube.com/watch?v=i0nd3NPJ4MI&list=RDi0nd3NPJ4MI&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-amber-100 hover:border-amber-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Không Thể Say</h4>
+                                    <p class="text-amber-600 text-sm">HIEUTHUHAI</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Bài hát về những cảm xúc khó diễn tả thành lời trong tình yêu và cuộc sống.</p>
+                            <div class="flex items-center text-amber-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 6: Em Không Khóc -->
+                    <a href="https://www.youtube.com/watch?v=w8r5zDA4awM" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-red-100 hover:border-red-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Em Không Khóc</h4>
+                                    <p class="text-red-600 text-sm">HIEUTHUHAI</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Ca khúc về sự mạnh mẽ, kiên cường và không để cảm xúc chi phối.</p>
+                            <div class="flex items-center text-red-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 7: Lựa Chọn Của Em -->
+                    <a href="https://www.youtube.com/watch?v=IJML-4ZYejA" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-indigo-100 hover:border-indigo-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Lựa Chọn Của Em</h4>
+                                    <p class="text-indigo-600 text-sm">HIEUTHUHAI</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Bài hát về quyết định và sự lựa chọn trong các mối quan hệ.</p>
+                            <div class="flex items-center text-indigo-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Song 8: Anh Vui -->
+                    <a href="https://www.youtube.com/watch?v=Nq7jffpx-yg&list=RDNq7jffpx-yg&start_radio=1" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-teal-100 hover:border-teal-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-play text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Anh Vui</h4>
+                                    <p class="text-teal-600 text-sm">HIEUTHUHAI</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Ca khúc về niềm vui và sự hài lòng với cuộc sống hiện tại.</p>
+                            <div class="flex items-center text-teal-500 font-medium">
+                                <i class="fab fa-youtube mr-2"></i>
+                                <span class="text-sm">Nghe trên YouTube</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Check-in Locations -->
+        <section class="mb-16">
+            <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Địa Điểm Check-in</h3>
+                        <p class="text-gray-500">Những nơi đã từng đến</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg mb-10 leading-relaxed">
+                    Những địa điểm đã từng đến trong các chuyến du lịch của tôi. Mỗi nơi đều để lại những kỷ niệm đẹp và trải nghiệm đáng nhớ.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Location 1: Bạc Liêu -->
+                    <a href="https://maps.app.goo.gl/kc3Hn3EhS5RBNo857" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-blue-100 hover:border-blue-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-pin text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Bạc Liêu</h4>
+                                    <p class="text-blue-600 text-sm">Tỉnh Bạc Liêu</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Địa điểm với những cánh đồng muối trắng tinh và văn hóa đặc sắc của miền Tây Nam Bộ.</p>
+                            <div class="flex items-center text-blue-500 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                <span class="text-sm">Xem trên Google Maps</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Location 2: Sóc Trăng -->
+                    <a href="https://maps.app.goo.gl/XZ6gtBru8pAnqQf5A" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-green-100 hover:border-green-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-pin text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Sóc Trăng</h4>
+                                    <p class="text-green-600 text-sm">Tỉnh Sóc Trăng</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Nổi tiếng với các ngôi chùa Khmer cổ kính và lễ hội Ok Om Bok đặc sắc.</p>
+                            <div class="flex items-center text-green-500 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                <span class="text-sm">Xem trên Google Maps</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Location 3: Trà Vinh -->
+                    <a href="https://maps.app.goo.gl/PZdrD5b7m2dsT9HL8" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-purple-100 hover:border-purple-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-pin text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Trà Vinh</h4>
+                                    <p class="text-purple-600 text-sm">Tỉnh Trà Vinh</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Vùng đất của những rừng dừa xanh mát và cộng đồng người Khmer với nền văn hóa phong phú.</p>
+                            <div class="flex items-center text-purple-500 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                <span class="text-sm">Xem trên Google Maps</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Location 4: Cần Thơ -->
+                    <a href="https://maps.app.goo.gl/Ax1ZhrtFXwmPhTMs9" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-amber-100 hover:border-amber-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-pin text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Cần Thơ</h4>
+                                    <p class="text-amber-600 text-sm">Thành phố Cần Thơ</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Trung tâm của Đồng bằng sông Cửu Long với chợ nổi Cái Răng nổi tiếng và ẩm thực phong phú.</p>
+                            <div class="flex items-center text-amber-500 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                <span class="text-sm">Xem trên Google Maps</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Location 5: Phú Quốc -->
+                    <a href="https://maps.app.goo.gl/pwXEtJAfR6o25cNd6" target="_blank" class="block">
+                        <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-red-100 hover:border-red-200 group">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-map-pin text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">Phú Quốc</h4>
+                                    <p class="text-red-600 text-sm">Đảo Phú Quốc</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Đảo ngọc với những bãi biển cát trắng tuyệt đẹp, rừng nguyên sinh và nước mắm nổi tiếng.</p>
+                            <div class="flex items-center text-red-500 font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                <span class="text-sm">Xem trên Google Maps</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Location 6: Thêm địa điểm -->
+                    <div class="bg-gradient-to-br from-gray-50 to-slate-50 rounded-2xl p-6 border border-gray-200 group hover:border-gray-300 transition-all duration-300 cursor-pointer">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-400 to-slate-500 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-plus text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Địa điểm tiếp theo</h4>
+                                <p class="text-gray-600 text-sm">Sắp tới...</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-5 text-sm leading-relaxed">Hành trình khám phá vẫn tiếp tục. Những điểm đến mới đang chờ đón phía trước.</p>
+                        <div class="text-gray-500 font-medium">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span class="text-sm">Đang lên kế hoạch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Life Milestones -->
+        <section class="mb-16">
+            <div class="glass-effect rounded-3xl card-shadow p-10 hover-lift">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-history text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Cột Mốc Đáng Nhớ</h3>
+                        <p class="text-gray-500">Hành trình cuộc đời của tôi</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg mb-10 leading-relaxed">
+                    Những cột mốc quan trọng đã định hình nên con người tôi ngày hôm nay. Mỗi giai đoạn đều mang đến những bài học và trải nghiệm quý giá.
+                </p>
+                
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-300 via-cyan-300 to-teal-300 rounded-full timeline-line" style="height: 0;"></div>
+                    
+                    <!-- Milestone Items -->
+                    <div class="space-y-12">
+                        <!-- 2000 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-baby text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12 md:pr-12 md:text-right">
+                                <div class="bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl p-6 border border-pink-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2000</h4>
+                                    <p class="text-gray-600">Cất tiếng khóc đầu lòng "Oa oa oa..." - Một bé trai được sinh ra đời và đó chính là Tôi</p>
+                                </div>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                        </div>
+                        
+                        <!-- 2006 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-school text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                            <div class="md:w-5/12 md:pl-12">
+                                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2006</h4>
+                                    <p class="text-gray-600">Bắt đầu học Tiểu học tại Trường Tiểu Học Nguyễn Thị Minh Khai - TP. Sóc Trăng</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2011 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12 md:pr-12 md:text-right">
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2011</h4>
+                                    <p class="text-gray-600">Bắt đầu học Trung học cơ sở tại Trường THCS Phường 2 - TP. Sóc Trăng</p>
+                                </div>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                        </div>
+                        
+                        <!-- 2016 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-violet-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-book-open text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                            <div class="md:w-5/12 md:pl-12">
+                                <div class="bg-gradient-to-r from-purple-50 to-violet-50 rounded-2xl p-6 border border-purple-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2016</h4>
+                                    <p class="text-gray-600">Bắt đầu học Trung học phổ thông tại Trường THPT Hoàng Diệu - TP. Sóc Trăng</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2018 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-university text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12 md:pr-12 md:text-right">
+                                <div class="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2018</h4>
+                                    <p class="text-gray-600">Bắt đầu học Đại học tại Trường ĐHCT ngành Thú Y Khoá 44</p>
+                                </div>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                        </div>
+                        
+                        <!-- 2022 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-user-md text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                            <div class="md:w-5/12 md:pl-12">
+                                <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2022</h4>
+                                    <p class="text-gray-600">Tốt Nghiệp Đại học và bắt đầu đi làm tại một số phòng mạch</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2023 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-indigo-400 to-blue-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-briefcase text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12 md:pr-12 md:text-right">
+                                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2023</h4>
+                                    <p class="text-gray-600">Bắt đầu thử sức với các mục tiêu khác mà trước giờ chưa làm - nên đã làm Nhân viên Kinh Doanh tại Công ty TNHH Sáu Ngôi Sao Việt Nam</p>
+                                </div>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                        </div>
+                        
+                        <!-- 2025: Cao học -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-teal-400 to-emerald-500 text-white shadow-xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                            <div class="md:w-5/12 md:pl-12">
+                                <div class="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-6 border border-teal-100">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2025</h4>
+                                    <p class="text-gray-600">Bắt đầu học tiếp Cao học để nâng cấp chuyên môn</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2025: Kết hôn - Đặc biệt -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 text-white shadow-2xl z-10 mb-6 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 border-4 border-white">
+                                <i class="fas fa-heart text-2xl"></i>
+                            </div>
+                            <div class="md:w-5/12 md:pr-12 md:text-right">
+                                <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-6 border-2 border-rose-200 shadow-lg">
+                                    <h4 class="font-bold text-gray-800 text-xl mb-2">2025 - Một cột mốc đặc biệt</h4>
+                                    <p class="text-gray-600 mb-4">Có một chuyện vô cùng QUAN TRỌNG xảy ra - Tôi đã Kết hôn. Tôi đã gặp được người con gái tôi muốn nắm tay và cùng nhau bước tiếp trên con đường sau này.</p>
+                                    <a href="https://drive.google.com/file/d/1z6Wi_H6_A2ge_14BKQARRTV18CfeWL4l/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">
+                                        <i class="fas fa-image"></i>
+                                        <span>Xem khoảnh khắc đặc biệt</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="md:w-5/12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="mt-20 pt-12 border-t border-gray-200/50 text-center text-gray-600">
+            <div class="flex flex-col items-center">
+                <div class="inline-flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800">Huỳnh Quang Ân</h4>
+                </div>
+                <p class="mb-8 text-gray-500 max-w-2xl mx-auto">
+                    Bác sĩ thú y với niềm đam mê chăm sóc động vật, yêu thích âm nhạc, điện ảnh và khám phá những vùng đất mới.
+                </p>
+                <p class="mb-8">© <span id="current-year">2023</span> Huỳnh Quang Ân. Tất cả các quyền được bảo lưu.</p>
+                <div class="flex justify-center gap-5">
+                    <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center text-blue-600 hover:from-blue-200 hover:to-cyan-200 hover:scale-110 transition-all duration-300 shadow-md">
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-green-600 hover:from-green-200 hover:to-emerald-200 hover:scale-110 transition-all duration-300 shadow-md">
+                        <i class="fab fa-zalo text-lg"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center text-red-600 hover:from-red-200 hover:to-pink-200 hover:scale-110 transition-all duration-300 shadow-md">
+                        <i class="fab fa-youtube text-lg"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-100 to-violet-100 flex items-center justify-center text-purple-600 hover:from-purple-200 hover:to-violet-200 hover:scale-110 transition-all duration-300 shadow-md">
+                        <i class="fab fa-tiktok text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Simple animation for profile image
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImage = document.getElementById('profile-image');
+            if (profileImage) {
+                profileImage.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                    this.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+                
+                profileImage.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            }
+            
+            // Add click effect to hobby cards
+            const hobbyCards = document.querySelectorAll('.bg-gradient-to-br.from-blue-50, .bg-gradient-to-br.from-green-50, .bg-gradient-to-br.from-amber-50');
+            hobbyCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('ring-2');
+                    this.classList.toggle('ring-blue-300');
+                    this.classList.toggle('ring-green-300');
+                    this.classList.toggle('ring-amber-300');
+                });
+            });
+
+            // Travel Gallery
+            const travelImages = [
+                "https://i.postimg.cc/4dvZxPnw/z7337933328240_9f7ca968f13d81f837953f89295e73c8.jpg",
+                "https://i.postimg.cc/6qYXdQrn/z7337933330826_9a6d17140add4d8482b811285ab13aa7.jpg",
+                "https://i.postimg.cc/d34Y802T/z7337933333273_69f91aeb688f88323c2092ceb21cc9f5.jpg",
+                "https://i.postimg.cc/KjJ2nYPD/z7337933338648_733ca8a6bf29ab71372bf31e442e516b.jpg",
+                "https://i.postimg.cc/6qYXdQrh/z7337933345317_31c4b74cd5cee22e08c24bb7085b362e.jpg",
+                "https://i.postimg.cc/90JhGfdk/z7337933351141_ea284ad32e95dc64df648015e55f62dc.jpg",
+                "https://i.postimg.cc/597T41rk/z7340197127836_e26687678bc19e7b30b8d5b09fec5a6f.jpg",
+                "https://i.postimg.cc/jSNF4fjJ/z7340197142992_adbb6b2f6ed9207dc01a88f9dc611240.jpg",
+                "https://i.postimg.cc/TP6H7Py7/z7340197159957_34d7a0e25d7126d0bf8580dc6c5c6679.jpg",
+                "https://i.postimg.cc/YCgszFSB/z7340197170111_b5d8a854dcebc2fee310bf0ea20ecb68.jpg",
+                "https://i.postimg.cc/2579PfvG/z7340197182136_e7ea6484f3e2cd92d44f2d7aed3de987.jpg",
+                "https://i.postimg.cc/yxkfgg5V/z7340197203683_6e3c6f3e0e67299726cdc917936221b3.jpg",
+                "https://i.postimg.cc/05BXgnMz/z7340197245897_166f3e2ba765c32e27d8831c50a20a8d.jpg",
+                "https://i.postimg.cc/QMmSfJZV/z7340197267828_ccedca89492a2830b687e4ea66df4717.jpg",
+                "https://i.postimg.cc/XvYDSz8C/z7340197395519_5782a2c76713358536b2cebaf9c371fb.jpg",
+                "https://i.postimg.cc/JhzdV2qH/z7340197414881_15fcdc467bae299323bb811b5bd9129c.jpg",
+                "https://i.postimg.cc/QMdnGybW/z7340197436245_a52add3f90669e2355fa414b71b5e26f.jpg",
+                "https://i.postimg.cc/Bv77qBYY/z7340197462584_b98792eb7a6ae7ed17801d0374e48a0b.jpg",
+                "https://i.postimg.cc/KzKq43wd/z7340197494110_0b8b0f41798664b12d488a4e7d5be23c.jpg",
+                "https://i.postimg.cc/qRtbg6W4/z7340197520169_93631120c31609a41d267c864f21561f.jpg",
+                "https://i.postimg.cc/3RySW0zx/z7340197541816_a721664c1c132ef9dfe7765f8fcf9f20.jpg",
+                "https://i.postimg.cc/DZWjm4R2/z7340197553332_12f3779d85acc4c45de48ca413e02b0c.jpg",
+                "https://i.postimg.cc/ydwfRYzT/z7340197585832_550f6b153e4967c56191ee12422d27ff.jpg",
+                "https://i.postimg.cc/wMLwQ860/z7340197607491_4b6563941e531788914d3c4f145b268d.jpg",
+                "https://i.postimg.cc/zDg2rWnR/z7340197630932_f4bd5ef1251af8453298cdf173c56265.jpg",
+                "https://i.postimg.cc/sDC6DXmz/z7340197675973_ad8275f7dee5cdc47a062e1657182256.jpg",
+                "https://i.postimg.cc/jd68Wb3q/z7340197731834_28a0821fecd61cb911db2c678a4ed987.jpg",
+                "https://i.postimg.cc/dQyNYd8f/z7340197660793_a7c88165662f7124729daf631b020705.jpg"
+            ];
+
+            const galleryContainer = document.getElementById('travel-gallery');
+            const showMoreBtn = document.getElementById('show-more-btn');
+            let visibleCount = 6; // Initially show 6 images
+
+            function renderGallery() {
+                galleryContainer.innerHTML = '';
+                const imagesToShow = travelImages.slice(0, visibleCount);
+                
+                imagesToShow.forEach((src, index) => {
+                    const imgDiv = document.createElement('div');
+                    imgDiv.className = 'rounded-2xl overflow-hidden hover-lift cursor-pointer relative group';
+                    imgDiv.innerHTML = `
+                        <div class="relative h-64 overflow-hidden">
+                            <img 
+                                src="${src}" 
+                                alt="Du lịch ${index + 1}" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                <div class="flex items-center">
+                                    <i class="fas fa-mountain mr-2"></i>
+                                    <span class="font-medium">Điểm đến ${index + 1}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add click to view larger
+                    imgDiv.addEventListener('click', function() {
+                        const modal = document.createElement('div');
+                        modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 modal-enter';
+                        modal.innerHTML = `
+                            <div class="relative max-w-5xl max-h-[90vh]">
+                                <img src="${src}" alt="Du lịch ${index + 1}" class="max-w-full max-h-[85vh] rounded-2xl modal-image shadow-2xl">
+                                <button class="absolute top-6 right-6 bg-white/20 hover:bg-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:scale-110">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                        
+                        // Function to close modal
+                        const closeModal = () => {
+                            modal.style.opacity = '0';
+                            modal.style.transition = 'opacity 0.3s ease';
+                            setTimeout(() => {
+                                modal.remove();
+                                document.removeEventListener('keydown', handleEscape);
+                            }, 300);
+                        };
+                        
+                        // Handle Escape key
+                        const handleEscape = (e) => {
+                            if (e.key === 'Escape') {
+                                closeModal();
+                            }
+                        };
+                        
+                        modal.querySelector('button').addEventListener('click', closeModal);
+                        
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                closeModal();
+                            }
+                        });
+                        
+                        // Add Escape key listener
+                        document.addEventListener('keydown', handleEscape);
+                    });
+                    
+                    galleryContainer.appendChild(imgDiv);
+                });
+                
+                // Update button text
+                if (visibleCount >= travelImages.length) {
+                    showMoreBtn.innerHTML = '<i class="fas fa-check mr-3"></i>Đã Hiển Thị Tất Cả';
+                    showMoreBtn.disabled = true;
+                    showMoreBtn.classList.remove('from-blue-500', 'to-cyan-500', 'hover:from-blue-600', 'hover:to-cyan-600');
+                    showMoreBtn.classList.add('from-gray-400', 'to-gray-500', 'cursor-not-allowed');
+                } else {
+                    showMoreBtn.innerHTML = '<i class="fas fa-images mr-3"></i>Xem Thêm Hình Ảnh';
+                }
+            }
+
+            // Show more images
+            showMoreBtn.addEventListener('click', () => {
+                visibleCount = Math.min(visibleCount + 6, travelImages.length);
+                renderGallery();
+                
+                // Smooth scroll to gallery
+                galleryContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+
+            // Initial render
+            renderGallery();
+            
+            // Current year for footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                const currentYear = new Date().getFullYear();
+                yearSpan.textContent = currentYear;
+            }
+
+            // Add hover effects to check-in location cards
+            const locationCards = document.querySelectorAll('a[target="_blank"] > div.bg-gradient-to-br');
+            locationCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add hover effects to music cards
+            const musicCards = document.querySelectorAll('a[href*="youtube"] > div.bg-gradient-to-br');
+            musicCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click effect to the "next location" card
+            const nextLocationCard = document.querySelector('.bg-gradient-to-br.from-gray-50');
+            if (nextLocationCard) {
+                nextLocationCard.addEventListener('click', function() {
+                    this.classList.toggle('ring-2');
+                    this.classList.toggle('ring-gray-300');
+                    
+                    // Create a nice notification
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-6 right-6 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-2xl shadow-lg z-50 transform translate-x-full opacity-0';
+                    notification.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-calendar-plus text-xl"></i>
+                            <div>
+                                <p class="font-medium">Đang lên kế hoạch cho điểm đến tiếp theo!</p>
+                                <p class="text-sm opacity-90">Cập nhật sớm nhất nhé!</p>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(notification);
+                    
+                    // Animate in
+                    setTimeout(() => {
+                        notification.style.transform = 'translateX(0)';
+                        notification.style.opacity = '1';
+                        notification.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease';
+                    }, 10);
+                    
+                    // Remove after 3 seconds
+                    setTimeout(() => {
+                        notification.style.transform = 'translateX(100%)';
+                        notification.style.opacity = '0';
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 500);
+                    }, 3000);
+                });
+            }
+
+            // Movie Gallery Modal
+            const movieImages = document.querySelectorAll('#movies-gallery img');
+            movieImages.forEach((img) => {
+                const parentDiv = img.closest('.group');
+                if (parentDiv) {
+                    parentDiv.addEventListener('click', function() {
+                        const src = img.src;
+                        const alt = img.alt;
+                        const modal = document.createElement('div');
+                        modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 modal-enter';
+                        modal.innerHTML = `
+                            <div class="relative max-w-5xl max-h-[90vh]">
+                                <img src="${src}" alt="${alt}" class="max-w-full max-h-[85vh] rounded-2xl modal-image shadow-2xl">
+                                <button class="absolute top-6 right-6 bg-white/20 hover:bg-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:scale-110">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                        
+                        // Function to close modal
+                        const closeModal = () => {
+                            modal.style.opacity = '0';
+                            modal.style.transition = 'opacity 0.3s ease';
+                            setTimeout(() => {
+                                modal.remove();
+                                document.removeEventListener('keydown', handleEscape);
+                            }, 300);
+                        };
+                        
+                        // Handle Escape key
+                        const handleEscape = (e) => {
+                            if (e.key === 'Escape') {
+                                closeModal();
+                            }
+                        };
+                        
+                        modal.querySelector('button').addEventListener('click', closeModal);
+                        
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                closeModal();
+                            }
+                        });
+                        
+                        // Add Escape key listener
+                        document.addEventListener('keydown', handleEscape);
+                    });
+                }
+            });
+
+            // Add parallax effect to background shapes on scroll
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const shapes = document.querySelectorAll('.shape-blob');
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                
+                shapes.forEach((shape, index) => {
+                    const speed = 0.3 + (index * 0.1);
+                    shape.style.transform = `translateY(${rate * speed}px)`;
+                });
+                
+                lastScrollTop = scrolled <= 0 ? 0 : scrolled;
+            });
+
+            // Add typing effect to header
+            const headerTitle = document.querySelector('header h1');
+            if (headerTitle) {
+                const originalText = headerTitle.textContent;
+                headerTitle.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < originalText.length) {
+                        headerTitle.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
+                };
+                // Start typing after a delay
+                setTimeout(typeWriter, 500);
+            }
+
+            // Timeline Animation on Scroll
+            const milestoneItems = document.querySelectorAll('.relative.flex.flex-col.md\\:flex-row.items-center');
+            
+            if (milestoneItems.length > 0) {
+                const timelineObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Animate the milestone item
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            
+                            // Animate the icon inside (handle both w-16 and w-20 for special milestone)
+                            const icon = entry.target.querySelector('.flex.items-center.justify-center.w-16, .flex.items-center.justify-center.w-20');
+                            if (icon) {
+                                icon.classList.add('timeline-icon');
+                            }
+                            
+                            timelineObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+
+                milestoneItems.forEach(item => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px)';
+                    item.style.transition = 'opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    timelineObserver.observe(item);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
